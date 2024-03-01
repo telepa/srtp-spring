@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Initial</title>
+</head>
+<body>
+    <a href="login.html">login</a>
+    <form role="form" action = "/Register" method="post">
+        <input type="submit" id = "Register" value = "Register">
+    </form>
+    <button id="btn">Speak</button>
+    </script>
+    <br>
+    <script>
+        var a = 10;
+        document.write(a);
+        console.log(a)
+    </script>
+    <br>
+    <audio controls
+           src="http://music.163.com/song/media/outer/url?id=1337065812.mp3">
+    </audio>
+    <audio controls autoplay loop
+           src="/audio/1-1.wav">
+    </audio>
+    <script>
+        if (location.href.indexOf("#reloaded") == -1) {
+            location.href = location.href + "#reloaded";
+            location.reload();
+        }
+    </script>
+    <script type="text/javascript">
+        window.onload = function(){
+            setInterval("toggleSound()",100);
+        }
+        function toggleSound() {
+            var music = document.getElementById("vd");//获取ID
+            console.log(music);
+            console.log(music.paused);
+            if (music.paused) { //判读是否播放
+                music.paused=false;
+                music.play(); //没有就播放
+            }
+        }
+    </script>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="multipartfile" accept="image/png/wav" value="请选择文件">
+        <input type="submit" value="上传">
+    </form>
+    <script>
+        // 获取按钮元素
+        let btn = document.getElementById('btn')
+        // 给按钮绑定点击事件
+        btn.addEventListener('click', () => {
+            // 发送一个http请求
+            let xhr = new XMLHttpRequest()
+            // 指定请求方式和请求的URL
+            xhr.open('GET','/Speak',false)
+            // 监听请求状态变化
+            xhr.onreadystatechange = () => {
+                // 如果请求已完成，并且响应状态码为200，表示请求成功
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // 将响应数据转换成JavaScript对象
+                    const result = JSON.parse(xhr.responseText).data
+                    // 在控制台输出结果
+                    console.log(result);
+                }
+            }
+            // 发送请求
+            xhr.send()
+            var data = xhr.responseText  //当请求到来时，读取请求中的数据-->
+            a=data;
+            console.log(a)
+            document.write(a);
+            setTimeout(() => location.reload(), 1000);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.myapp.DAO.FollowUpInfoMapper">
+    <select id="getFollowInfo" resultType="com.example.myapp.pojo.follow_up_info">
+        select * from follow_up_info where f_id=#{f_id} and id=#{id} and f_date=#{f_date}
+    </select>
+    <insert id="InsertAnswer">
+        insert into follow_up_info values(#{f_id},#{id},#{classify},#{f_date},#{question},#{ans},#{score})
+    </insert>
+    <delete id="Restart">
+        delete from follow_up_info where id=#{id} and f_date = #{f_date}
+    </delete>
+    <select id="getLines" resultType="java.lang.Integer">
+        select count(*) from follow_up_info where id=#{param1} and f_date=#{param2};
+    </select>
+</mapper>

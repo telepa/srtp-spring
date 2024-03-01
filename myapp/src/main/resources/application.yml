@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    name: db1  #数据库名
+    url: jdbc:mysql://localhost:3306/db1 #url
+    username: zxy  #用户名
+    password: 20221208password!  #密码
+    driver-class-name: com.mysql.cj.jdbc.Driver  #数据库链接驱动
+  application:
+    name: springboot-weixin
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml  #配置映射文件
+  type-aliases-package: com.example.myapp.pojo #配置实体类
+
+#wx.miniapp.appid:wxaaed0f385afcbca1
+#wx.miniapp.appsecret:be2d892041edf5559a1d9aa707a6c8e1
+weixin:
+  appid: 'appid'
+  secret: '应用密钥'
+
